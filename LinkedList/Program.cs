@@ -7,22 +7,26 @@ internal class Program
     static void Main(string[] args)
     {
 
-        Linked_List list = new Linked_List();
-        list.Insert(5);
-        list.Insert(1);
-        list.Insert(2);
-        list.Insert(3);
-        list.Insert(7);
-        list.Insert(8);
+        Linked_List<string> list = new Linked_List<string>();
+        list.Insert("Vahe");
+        list.Insert("Armen");
+        list.Insert("Narek");
+        list.Insert("Hayk");
+        list.Insert("Ara");
+        list.Insert("Suren");
 
         list.Print();
 
 
-        Console.WriteLine(list.Find(1));
-        list.Remove(4);
+        Console.WriteLine(list.Find("Vahe"));
+        //list.Remove("Vahe");
+        list.Remove("Suren");
+        list.Insert("Sur");
+        
 
         list.Print();
-        Console.WriteLine(list.Find(4));
+
+     
 
     }
 

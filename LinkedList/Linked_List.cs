@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    internal class Linked_List
+    internal class Linked_List <T>: IDataStructure<T>
     {
-        public Node head;
-        public Node tail;
+        public Node<T> head;
+        public Node<T> tail;
         public int Count;
 
-        public void Insert(int data)
+        public void Insert(T data)
         {
 
             if (head == null)
             {
-                head = new Node(data);
+                head = new Node<T>(data);
                 tail = head;
                 Count++;
             }
             else
             {
-                tail.Next = new Node(data);
+                tail.Next = new Node<T>(data);
                 tail = tail.Next;
                 Count++;
             }
@@ -31,7 +31,7 @@ namespace LinkedList
         }
         public void Print()
         {
-            Node cur = head;
+            Node<T> cur = head;
             while (cur != null)
             {
                 Console.Write($"{cur.value} ");
@@ -40,12 +40,12 @@ namespace LinkedList
             Console.WriteLine();
 
         }
-        public bool Find(int data)
+        public bool Find(T data)
         {
-            Node cur = head;
+            Node<T> cur = head;
             while (cur != null)
             {
-                if (cur.value == data)
+                if (cur.value.Equals( data))
                 {
                     return true;
                 }
@@ -56,21 +56,25 @@ namespace LinkedList
 
 
         }
-        public void Remove(int data)
+        public void Remove(T data)
         {
-            Node cur = head;//5  1 2 3
-            Node temp = head;
+            Node<T> cur = head;//5  1 2 3
+            Node<T> temp = head;
             while (cur != null)
             {
-                if (cur.value == data && head.value == data)
+                if (cur.value.Equals(data) && head.value.Equals( data))
                 {
                     head = head.Next;
                     Count--;
                 }
-                if (cur.value == data)
+                if (cur.value.Equals(data))
                 {
                     temp.Next = cur.Next;
                     Count--;
+                    if(cur.Next==null)
+                    {
+                        tail = temp;
+                    }
                 }
                 temp = cur;
 
